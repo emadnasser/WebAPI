@@ -5,9 +5,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace _Part_5.Controllers
 {
+    [EnableCorsAttribute("*", "*", "*")]
     public class EmployeesController : ApiController
     {
         public IEnumerable<Employee> Get()
@@ -18,6 +20,7 @@ namespace _Part_5.Controllers
             }
         }
 
+        [DisableCors]
         public Employee Get(int id)
         {
             using (EmployeeDBEntities entities = new EmployeeDBEntities())
